@@ -1,0 +1,163 @@
+/* ── Reset ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Página ── */
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0ede8;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Corpo da calculadora ── */
+.calc {
+  width: 360px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Display ── */
+.display {
+  padding: 1.5rem 1.5rem 1rem;
+  background: #f7f5f2;
+  border-bottom: 1px solid #e8e5e0;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+/* Linha de expressão (operação em andamento) */
+.expr {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #aaa;
+  min-height: 20px;
+  word-break: break-all;
+  text-align: right;
+}
+
+/* Número principal */
+.result {
+  font-family: 'DM Mono', monospace;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+  text-align: right;
+  word-break: break-all;
+  line-height: 1.1;
+  transition: font-size 0.1s;
+}
+
+/* Fonte menor para números longos */
+.result.small {
+  font-size: 22px;
+}
+
+/* ── Grade de botões ── */
+.btns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #e8e5e0;
+}
+
+/* ── Botão base ── */
+.btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+  height: 64px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #1a1a1a;
+  transition: background 0.1s, transform 0.08s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover  { background: #f7f5f2; }
+.btn:active { transform: scale(0.92); background: #eeebe6; }
+
+/* ── Variações de botão ── */
+
+/* AC, +/−, % */
+.btn.fn {
+  color: #666;
+  font-size: 14px;
+}
+
+/* ÷ × − + */
+.btn.op {
+  color: #5C4FB7;
+  font-weight: 500;
+  font-size: 18px;
+}
+.btn.op:hover { background: #f3f1fd; }
+
+/* Funções avançadas binárias: xʸ  x÷÷y  logₙ  ʸ√x */
+.btn.adv {
+  color: #0e7a5c;
+  font-weight: 500;
+  font-size: 13px;
+}
+.btn.adv:hover { background: #edf8f4; }
+
+/*
+  Funções científicas unárias:
+  sin, cos, tan, sin⁻¹, cos⁻¹, tan⁻¹, n!, ln, log, eˣ
+  Constantes: π, e
+*/
+.btn.sci {
+  color: #b85c00;
+  font-weight: 500;
+  font-size: 12px;
+  height: 52px;        /* levemente menor que os botões normais */
+}
+.btn.sci:hover { background: #fff5ed; }
+.btn.sci:active { transform: scale(0.92); background: #ffe8d2; }
+
+/* Constantes π e e — destaque sutil diferente das funções */
+.btn.sci.const {
+  color: #8b4a00;
+  font-style: italic;
+}
+
+/* = */
+.btn.eq {
+  background: #5C4FB7;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+}
+.btn.eq:hover  { background: #4e43a8; }
+.btn.eq:active { background: #413890; transform: scale(0.92); }
+
+/* Botão 0 — ocupa 2 colunas */
+.btn.zero {
+  grid-column: span 2;
+  justify-content: flex-start;
+  padding-left: 28px;
+}
+
+/* ── Separador entre seções ── */
+.separator {
+  grid-column: span 4;
+  height: 1px;
+  background: #e8e5e0;
+}
